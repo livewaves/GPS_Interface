@@ -7,7 +7,7 @@ entity RS_232_Rx is
 				Clock 			: in  	STD_LOGIC;
 				Data_Out		: out  	unsigned 	(7 downto 0);
 				Valid			: out  	STD_LOGIC;
-				Rx			 : in  	STD_LOGIC);
+				Rx			: in  	STD_LOGIC);
 end RS_232_Rx;
 
 architecture Behavioral of RS_232_Rx is

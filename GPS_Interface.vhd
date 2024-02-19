@@ -106,8 +106,8 @@ begin
             
             
             if (GPS_Rx_Valid = '1') then
-                The_Last_Two_Letters(7 downto 0)    <=      GPS_Rx_Data;
-                The_Last_Two_Letters(15 downto 0)   <=      The_Last_Two_Letters(7 downto 0);
+                The_Last_Two_Letters(7 downto 0)        <=      GPS_Rx_Data;
+                The_Last_Two_Letters(15 downto 0)       <=      The_Last_Two_Letters(7 downto 0);
                         
                 if (The_Last_Two_Letters = GGA_Identifier) then
                     Latitude_Minute                     <=      (others=>'0');
@@ -138,13 +138,13 @@ begin
                     end if;
                     
                     if (BCD_Digit_Counter = to_unsigned(4, 4)) then
-                        Latitude_Minute            <=       Latitude_Minute_Temp +
+                        Latitude_Minute                <=       Latitude_Minute_Temp +
                                                             (Latitude_Degree_Temp sll 6) -
                                                             (Latitude_Degree_Temp sll 2);
                     end if;
                     
                     if (BCD_Digit_Counter >= to_unsigned(5, 4) and BCD_Digit_Counter <= to_unsigned(8, 4)) then
-                        Latitude_Minute            <=       resize(GPS_Rx_Data(3 downto 0), 26) + 
+                        Latitude_Minute                <=       resize(GPS_Rx_Data(3 downto 0), 26) + 
                                                             (Latitude_Minute sll 3) +
                                                             (Latitude_Minute sll 1);
                     end if;                   
